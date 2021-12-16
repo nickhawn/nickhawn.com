@@ -32,14 +32,7 @@ export default function Home() {
           href="https://www.linkedin.com/in/nickhawn/">
           LinkedIn
         </a>
-        {' '}
-        <a
-          className="underline text-yellow-600 hover:text-yellow-700 mr-3"
-          href="http://github.com/nickhawn">
-          Github
-        </a>
         </p>
-       
       </main>
     </div>
   )
