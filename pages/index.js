@@ -23,7 +23,7 @@ export default function Home() {
         <p className="mt-8 text-2xl">
         <a
           className="underline text-yellow-600 hover:text-yellow-700 mr-3"
-          href="mailto:nickhawn@hey.com">
+          href="mailto:nick@nickhawn.com">
           Email
         </a>
         {' '}
