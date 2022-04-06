@@ -5,7 +5,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
         <meta charSet="utf-8" />
-        <title>Nicholas Hawn | Software Developer Based In Grand Rapids</title>
+        <title>Nick Hawn | Software Developer Based In Grand Rapids</title>
         <meta name="description" content="Hi, I am Nick Hawn a Software Developer based in Grand Rapids Michigan."></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
