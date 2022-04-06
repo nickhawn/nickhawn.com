@@ -6,7 +6,7 @@ export default function Home() {
       <Head>
         <meta charSet="utf-8" />
         <title>Nicholas Hawn | Software Developer Based In Grand Rapids</title>
-        <meta name="description" content="Hi, I am Nicholas Hawn a Software Developer based in Grand Rapids Michigan."></meta>
+        <meta name="description" content="Hi, I am Nick Hawn a Software Developer based in Grand Rapids Michigan."></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
