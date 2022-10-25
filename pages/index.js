@@ -14,10 +14,10 @@ export default function Home() {
         <h1 className="text-5xl font-bold">
           Hi, I am{' '}
           <span className="text-blue-600">
-          Nick Hawn{' '}
+          Nick Hawn,{' '}
           </span>
           a Software Developer <br/> 
-          Based in Grand Rapids Michigan. 
+          Based in Grand Rapids, Michigan. 
         </h1>
       </main>
     </div>
