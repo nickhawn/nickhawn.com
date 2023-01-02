@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-primary: var(--arc-palette-foregroundPrimary, #f29a7dff);
+  --gradient: var(--arc-background-gradient-overlay-color1, #f27dad);
+  --background: var(--arc-palette-background, #f4e9e4f4);
+}
+
+.primary-color {
+  color: var(--color-primary) !important;
+}
+
+.gradient {
+  color: var(--gradient) !important;
+}
+
+.background {
+  background-color: var(--background);
+}
+
+.underline {
+  text-decoration-color: var(--color-primary);
+  text-decoration-thickness: 2px;
+  text-decoration-line: underline;
+}
