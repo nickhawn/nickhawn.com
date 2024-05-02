@@ -21,9 +21,7 @@ export default function Home() {
         </h1>
         <p className="mt-3 text-md">
           Software Developer & Consultant at{" "}
-          <a href="https://www.atomicobject.com/" className="underline">
             Atomic Object
-          </a>
         </p>
       </main>
       <div className="flex flex-row justify-start justify-items-start justify-self-start">
