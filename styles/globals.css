@@ -11,6 +11,9 @@
 .primary-color {
   color: var(--color-primary) !important;
 }
+.background-primary-color {
+  background-color: var(--color-primary) !important;
+}
 
 .gradient {
   color: var(--gradient) !important;
