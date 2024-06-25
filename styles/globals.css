@@ -19,6 +19,10 @@
   color: var(--gradient) !important;
 }
 
+.custom-height {
+  height: 100svh;
+}
+
 .background {
   background-color: var(--background);
 }

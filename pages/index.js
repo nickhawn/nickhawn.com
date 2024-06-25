@@ -2,7 +2,7 @@ import Head from "next/head";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen background">
+    <div className="flex flex-col items-center justify-center custom-height background">
       <Head>
         <meta charSet="utf-8" />
         <title>Nick Hawn | Software Developer Based In Grand Rapids</title>
