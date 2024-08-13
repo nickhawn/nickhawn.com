@@ -20,27 +20,14 @@ export default function Home() {
           Based in Grand Rapids, Michigan.
         </h1>
         <p className="mt-3 text-md">
-          Software Developer & Consultant at{" "}
-          <a href="https://www.atomicobject.com/" className="underline">
-            Atomic Object
-          </a>
-        </p>
-      </main>
-      <div className="flex flex-row items-center justify-center mt-4">
-        <a
+          <a
           href="https://spin.atomicobject.com/author/nick-hawn/"
           className="flex justify-center text-sm gradient"
         >
-          Latest Blog Post
+          Latest Blog Posts
         </a>
-        <div className="h-4 w-0.5 mx-2 background-primary-color"></div>
-        <a
-          href="https://www.linkedin.com/in/nickhawn/"
-          className="flex justify-center text-sm gradient"
-        >
-          Linkedin
-        </a>
-      </div>
+        </p>
+      </main>
     </div>
   );
 }
