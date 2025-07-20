@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nick Hawn | Software Developer Based In Grand Rapids</title>
+    <meta
+      name="description"
+      content="Hi, I am Nick Hawn a Software Developer based in Grand Rapids Michigan."
+    />
+    <link
+      rel="icon"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAABHFJREFUWEftl/1PlXUYxj8PiKxSAow0BNThYrNYAim4ECMSIzQYpU4gDAGzRP+R1nrRkRklEFkgNJFeRCaKDFCRFNDAN0RAFIEIV6koPO0+Xw/nPJxz5IBtba3vL+dsz3O+93Vf13W/HE0fvqXzLx7tfwCPzIAIqE1dw6lLYA7c1AgX2hQCNzdIWDcpQJMHYA6sK+/qe/egLQwCV1c43QCZ2aA5T4nzAMYCm8KqjEdHYecHkLUdLp+HjnZYnWTRRHBMINHkAJgDmyXv64UDJZCxFQ7/DB6esGSZHUNoDmV5OICxDmG/Vehnm+DqFbT4RPg2DyKjwX+eY0fakcYxAKH3aCXcv680jYiEGTONl1dVwJOeELIEcj6EzdthurvlneFhOHYYfXQETUolOAR85xrucAygvw/2fwcRUXCtUwF5PdEIoCgfXopWQQ+WQdpm43PxRE2VAniqHpa/AoFBBjnsAxDGW5vROy6jxSXCvXtQmAsxr0HAAosBd30EmdvgQqsCuWqNAYB+sg7t7h0V+POPISUDZno4wYAAqD6kXg4NVz+4dB6O18CGdFVyYsCKckjNhCMV4P0UvBBmZOCHUvSgRTDbF624ALK22XQtxxLs+1rRP9cf/vxD6V9WDH7zICwczjVBTzesjIeiAoiKgWd8rQBosCcHkpIV2NYWeGOtjUHtAxAD7v4E0t+D69eg8kdF353bULoX1m+ExuPgNQueXwxffGrSXy/YbQowVv7SGTOyoe4YTHOF8EgnAfTdhMpy2LAJGurgzCmQbhcdi15fA0/PgcYTaKKtyCESrEuD4bvGAPJsmptibvGLMD/QSQC/NkNPF8TEwU/7YcFCOFEDYkhvHxXom1zYtBXazimKxd1dHcYAi4IVS7k7FIOPP+EcAL26Es3LG4JD0fM/Q3szFbo7oeUXeCsFhCHJWqSQT2FEDDvQZwnQchpWxIKnF5QVQdq7dmeErQekAkoLTV1Nn+GBVlIIG7eADB+hUqSQxnTzBkSvAnG3fPrMNmb35Q5IzlTlKRUUl2C3Q9oCGBmBr3bCO++jd3WgtZ1V1MsZ6IfOdhj6XQUMek45XaQQvc1naBDKSyA1C+qrwf0xCF2qgJu7+oOBaQtAMjt6CNa+DQ214OIKYRGWywXg93vh5Vg1DWurICnFmN2lNmi/CLFr4EAxhEYYZ4TVhLQFIPUqgX3mQH8vRMVCwHwjgLwcE0PSLRn8DZbHGAFIw7pyURmw+yqkbQF3qxlh3S1sVrLbf8GNHvWK5qKQC71m6nqvP8g6GY4cBF9/JYWZXqH21pDFkG7TwS/Arv6mEHZ3wvFLhLVuLWdgcEBlXZQHK1eD9yxbhzu5K068kFhfJN9NWfupui/YBenZ4DJuBXMyuGMGHBEmF+/Lh1fjQabcyVpIWO+QXtODf2wlk8tkLEuJhixVGkuTWbbi4QAmeDqxBNYXyFLS3KjKT07gs8rp4489DzlYlCcH4JFytf/j/wAA6/8Lzv8fGaNj6gzYc/ckys+M4G//depwnZ/rxQAAAABJRU5ErkJggg=="
+    />
+    <style>
+      :root {
+        --color-primary: #f29a7d;
+        --color-accent: #f27dad;
+        --color-background: #f4e9e4;
+        --color-text: #000;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background-color: var(--color-background);
+        color: var(--color-text);
+      }
+      .page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100svh; /* supports mobile viewport units */
+        text-align: center;
+        padding-inline: 1.25rem; /* 20px -> maintains spacing on very narrow screens */
+      }
+      .intro__heading {
+        font-size: clamp(1.5rem, 4.5vw, 2rem); /* Responsive font size */
+        font-weight: 700;
+        line-height: 1.4;
+        margin: 0;
+      }
+      .intro__name {
+        color: var(--color-primary);
+      }
+      .intro__link {
+        margin-top: 1.25rem;
+        font-size: 0.875rem;
+        color: var(--color-accent);
+        text-decoration: none;
+        transition: opacity 0.2s ease-in-out;
+      }
+      .intro__link:hover,
+      .intro__link:focus {
+        opacity: 0.8;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .intro__link {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <h1 class="intro__heading">
+        Hi, I am <span class="intro__name">Nick Hawn</span>, a Software
+        Developer <br />
+        Based in Grand Rapids, Michigan.
+      </h1>
+
+      <a
+        class="intro__link"
+        href="https://spin.atomicobject.com/author/nick-hawn/"
+        >Latest Blog Posts</a
+      >
+    </main>
+  </body>
+</html>
