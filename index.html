@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Primary Meta Tags -->
+    <title>Nick Hawn | Software Developer Based In Grand Rapids</title>
+    <meta
+      name="description"
+      content="Hi, I am Nick Hawn a Software Developer based in Grand Rapids Michigan."
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/logo.ico" />
+
+    <!-- Styles -->
+    <style>
+      /*
+        Variables
+        Using CSS custom properties so the colour palette is easy to adjust in one place.
+      */
+      :root {
+        /* Base colours (matching current production site) */
+        --color-primary: #f29a7d; /* orange-coral used for the name */
+        --color-accent: #f27dad; /* pink used for the link */
+        --color-background: #f4e9e4; /* light cream background */
+        --color-text: #000; /* main body text colour */
+      }
+
+      /*
+        Global element resets / defaults
+      */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background-color: var(--color-background);
+        color: var(--color-text);
+      }
+
+      /*
+        Layout utility: full-viewport centred flex container
+      */
+      .page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100svh; /* supports mobile viewport units */
+        text-align: center;
+        padding-inline: 1.25rem; /* 20px -> maintains spacing on very narrow screens */
+      }
+
+      /*
+        Intro block using BEM methodology
+      */
+      .intro__heading {
+        font-size: clamp(1.5rem, 4.5vw, 2rem); /* Responsive font size */
+        font-weight: 700;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      .intro__name {
+        color: var(--color-primary);
+      }
+
+      .intro__link {
+        margin-top: 1.25rem; /* 20px */
+        font-size: 0.875rem; /* 14px */
+        color: var(--color-accent);
+        text-decoration: none;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      .intro__link:hover,
+      .intro__link:focus {
+        opacity: 0.8;
+      }
+
+      /*
+        Accessibility: When users prefer reduced motion, remove transition.
+      */
+      @media (prefers-reduced-motion: reduce) {
+        .intro__link {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="page">
+      <h1 class="intro__heading">
+        Hi, I am <span class="intro__name">Nick Hawn</span>, a Software
+        Developer <br />
+        Based in Grand Rapids, Michigan.
+      </h1>
+
+      <a
+        class="intro__link"
+        href="https://spin.atomicobject.com/author/nick-hawn/"
+        >Latest Blog Posts</a
+      >
+    </main>
+  </body>
+</html>
