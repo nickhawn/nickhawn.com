@@ -49,20 +49,48 @@
         font-weight: 700;
         line-height: 1.4;
         margin: 0;
+        max-width: 700px;
       }
       .intro__name {
         color: var(--color-primary);
       }
-      .intro__link {
+      .intro__links {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
         margin-top: 1.25rem;
+        flex-wrap: wrap;
+      }
+      .intro__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
         font-size: 0.875rem;
         color: var(--color-accent);
         text-decoration: none;
         transition: opacity 0.2s ease-in-out;
+        position: relative;
+      }
+      .intro__link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+        transition: width 0.3s ease-in-out;
+      }
+      .external-icon {
+        opacity: 0.7;
       }
       .intro__link:hover,
       .intro__link:focus {
         opacity: 0.8;
+      }
+      .intro__link:hover::after,
+      .intro__link:focus::after {
+        width: 100%;
       }
       @media (prefers-reduced-motion: reduce) {
         .intro__link {
@@ -74,16 +102,27 @@
   <body>
     <main class="page">
       <h1 class="intro__heading">
-        Hi, I am <span class="intro__name">Nick Hawn</span>, a Software
-        Developer <br />
+        Hi, I am <span class="intro__name">Nick Hawn</span>, a Software Developer
         Based in Grand Rapids, Michigan.
       </h1>
 
-      <a
-        class="intro__link"
-        href="https://spin.atomicobject.com/author/nick-hawn/"
-        >Latest Blog Posts</a
-      >
+      <div class="intro__links">
+        <a
+          class="intro__link"
+          href="https://github.com/nickhawn"
+          >GitHub</a
+        >
+        <a
+          class="intro__link"
+          href="https://www.linkedin.com/in/nickhawn/"
+          >LinkedIn</a
+        >
+        <a
+          class="intro__link"
+          href="https://spin.atomicobject.com/author/nick-hawn/"
+          >Latest Blog Posts</a
+        >
+      </div>
     </main>
   </body>
 </html>
