@@ -3,11 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f4e9e4" />
     <title>Nick Hawn | Software Developer Based In Grand Rapids</title>
     <meta
       name="description"
       content="Hi, I am Nick Hawn a Software Developer based in Grand Rapids Michigan."
     />
+    <meta property="og:title" content="Nick Hawn | Software Developer" />
+    <meta
+      property="og:description"
+      content="Software Developer based in Grand Rapids, Michigan."
+    />
+    <meta property="og:type" content="website" />
     <link
       rel="icon"
       href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAABHFJREFUWEftl/1PlXUYxj8PiKxSAow0BNThYrNYAim4ECMSIzQYpU4gDAGzRP+R1nrRkRklEFkgNJFeRCaKDFCRFNDAN0RAFIEIV6koPO0+Xw/nPJxz5IBtba3vL+dsz3O+93Vf13W/HE0fvqXzLx7tfwCPzIAIqE1dw6lLYA7c1AgX2hQCNzdIWDcpQJMHYA6sK+/qe/egLQwCV1c43QCZ2aA5T4nzAMYCm8KqjEdHYecHkLUdLp+HjnZYnWTRRHBMINHkAJgDmyXv64UDJZCxFQ7/DB6esGSZHUNoDmV5OICxDmG/Vehnm+DqFbT4RPg2DyKjwX+eY0fakcYxAKH3aCXcv680jYiEGTONl1dVwJOeELIEcj6EzdthurvlneFhOHYYfXQETUolOAR85xrucAygvw/2fwcRUXCtUwF5PdEIoCgfXopWQQ+WQdpm43PxRE2VAniqHpa/AoFBBjnsAxDGW5vROy6jxSXCvXtQmAsxr0HAAosBd30EmdvgQqsCuWqNAYB+sg7t7h0V+POPISUDZno4wYAAqD6kXg4NVz+4dB6O18CGdFVyYsCKckjNhCMV4P0UvBBmZOCHUvSgRTDbF624ALK22XQtxxLs+1rRP9cf/vxD6V9WDH7zICwczjVBTzesjIeiAoiKgWd8rQBosCcHkpIV2NYWeGOtjUHtAxAD7v4E0t+D69eg8kdF353bULoX1m+ExuPgNQueXwxffGrSXy/YbQowVv7SGTOyoe4YTHOF8EgnAfTdhMpy2LAJGurgzCmQbhcdi15fA0/PgcYTaKKtyCESrEuD4bvGAPJsmptibvGLMD/QSQC/NkNPF8TEwU/7YcFCOFEDYkhvHxXom1zYtBXazimKxd1dHcYAi4IVS7k7FIOPP+EcAL26Es3LG4JD0fM/Q3szFbo7oeUXeCsFhCHJWqSQT2FEDDvQZwnQchpWxIKnF5QVQdq7dmeErQekAkoLTV1Nn+GBVlIIG7eADB+hUqSQxnTzBkSvAnG3fPrMNmb35Q5IzlTlKRUUl2C3Q9oCGBmBr3bCO++jd3WgtZ1V1MsZ6IfOdhj6XQUMek45XaQQvc1naBDKSyA1C+qrwf0xCF2qgJu7+oOBaQtAMjt6CNa+DQ214OIKYRGWywXg93vh5Vg1DWurICnFmN2lNmi/CLFr4EAxhEYYZ4TVhLQFIPUqgX3mQH8vRMVCwHwjgLwcE0PSLRn8DZbHGAFIw7pyURmw+yqkbQF3qxlh3S1sVrLbf8GNHvWK5qKQC71m6nqvP8g6GY4cBF9/JYWZXqH21pDFkG7TwS/Arv6mEHZ3wvFLhLVuLWdgcEBlXZQHK1eD9yxbhzu5K068kFhfJN9NWfupui/YBenZ4DJuBXMyuGMGHBEmF+/Lh1fjQabcyVpIWO+QXtODf2wlk8tkLEuJhixVGkuTWbbi4QAmeDqxBNYXyFLS3KjKT07gs8rp4489DzlYlCcH4JFytf/j/wAA6/8Lzv8fGaNj6gzYc/ckys+M4G//depwnZ/rxQAAAABJRU5ErkJggg=="
@@ -18,6 +26,9 @@
         --color-accent: #f27dad;
         --color-background: #f4e9e4;
         --color-text: #000;
+        --color-muted: #ccc;
+        --color-muted-subtle: #aaa;
+        --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
       }
       *,
       *::before,
@@ -34,18 +45,138 @@
           Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
         background-color: var(--color-background);
         color: var(--color-text);
+        overflow: hidden;
       }
+
+      body.loaded {
+        overflow: visible;
+      }
+
+      .boot-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--color-background);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .boot-screen.exit {
+        opacity: 0;
+        transform: scale(1.05);
+        pointer-events: none;
+      }
+
+      .boot-steps {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+        user-select: none;
+      }
+
+      .boot-step {
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        color: var(--color-muted);
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .boot-step.completed {
+        color: var(--color-muted-subtle);
+      }
+
+      .boot-step__label {
+        position: relative;
+      }
+
+      .boot-step.completed .boot-step__label::after {
+        content: '✓';
+        position: absolute;
+        margin-left: 0.25em;
+      }
+
+      .boot-step.active {
+        color: var(--color-primary);
+        font-weight: 600;
+        transform: scale(1.05);
+      }
+
+      .boot-step.active .boot-step__spinner {
+        display: inline-block;
+      }
+
+      .boot-step__spinner {
+        display: none;
+        width: 0.7em;
+        height: 0.7em;
+        border: 2px solid var(--color-primary);
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        margin-right: 0.35em;
+        vertical-align: middle;
+      }
+
+      .boot-separator {
+        color: var(--color-muted);
+        font-size: 0.8em;
+        transition: color 0.3s ease;
+      }
+
+      .boot-separator.completed {
+        color: var(--color-muted-subtle);
+      }
+
+      .boot-subtitle {
+        font-family: var(--font-mono);
+        font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+        color: var(--color-muted-subtle);
+        margin-top: 1rem;
+        min-height: 1.4em;
+        transition: opacity 0.3s ease;
+      }
+
+      .boot-subtitle.typing::after {
+        content: '▊';
+        animation: blink 0.7s step-end infinite;
+        margin-left: 1px;
+        color: var(--color-primary);
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes blink {
+        50% { opacity: 0; }
+      }
+
       .page {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        min-height: 100svh; /* supports mobile viewport units */
+        min-height: 100vh;
+        min-height: 100svh;
         text-align: center;
-        padding-inline: 1.25rem; /* 20px -> maintains spacing on very narrow screens */
+        padding-inline: 1.25rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease 0.1s, transform 0.8s ease 0.1s;
       }
+
+      .page.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       .intro__heading {
-        font-size: clamp(1.5rem, 4.5vw, 2rem); /* Responsive font size */
+        font-size: clamp(1.5rem, 4.5vw, 2rem);
         font-weight: 700;
         line-height: 1.4;
         margin: 0;
@@ -68,61 +199,153 @@
         font-size: 0.875rem;
         color: var(--color-accent);
         text-decoration: none;
-        transition: opacity 0.2s ease-in-out;
-        position: relative;
-      }
-      .intro__link::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-        transition: width 0.3s ease-in-out;
-      }
-      .external-icon {
-        opacity: 0.7;
+        background-image: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+        background-size: 0% 2px;
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        padding-bottom: 2px;
+        transition: background-size 0.3s ease-in-out, opacity 0.2s ease-in-out;
       }
       .intro__link:hover,
       .intro__link:focus {
         opacity: 0.8;
-      }
-      .intro__link:hover::after,
-      .intro__link:focus::after {
-        width: 100%;
+        background-size: 100% 2px;
       }
       @media (prefers-reduced-motion: reduce) {
-        .intro__link {
+        .intro__link,
+        .boot-screen,
+        .page,
+        .boot-step,
+        .boot-subtitle {
           transition: none;
+        }
+        .boot-step__spinner,
+        .boot-subtitle.typing::after {
+          animation: none;
         }
       }
     </style>
   </head>
   <body>
-    <main class="page">
+    <div class="boot-screen" id="boot">
+      <div class="boot-steps" id="bootSteps"></div>
+      <div class="boot-subtitle" id="bootSubtitle"></div>
+    </div>
+
+    <main class="page" id="site">
       <h1 class="intro__heading">
         Hi, I am <span class="intro__name">Nick Hawn</span>, a Software Developer
         Based in Grand Rapids, Michigan.
       </h1>
 
-      <div class="intro__links">
+      <nav class="intro__links" aria-label="Social links">
         <a
           class="intro__link"
           href="https://github.com/nickhawn"
+          target="_blank"
+          rel="noopener noreferrer"
           >GitHub</a
         >
         <a
           class="intro__link"
           href="https://www.linkedin.com/in/nickhawn/"
+          target="_blank"
+          rel="noopener noreferrer"
           >LinkedIn</a
         >
         <a
           class="intro__link"
           href="https://spin.atomicobject.com/author/nick-hawn/"
+          target="_blank"
+          rel="noopener noreferrer"
           >Latest Blog Posts</a
         >
-      </div>
+      </nav>
     </main>
+
+    <script type="module">
+      const STEPS = [
+        { label: 'Explore',   subtitle: 'learning about nick...',    duration: 800 },
+        { label: 'Plan',      subtitle: 'gathering blog posts...', duration: 800 },
+        { label: 'Implement', subtitle: 'rendering page...',       duration: 800 },
+      ];
+
+      const stepsEl = document.getElementById('bootSteps');
+      const subtitleEl = document.getElementById('bootSubtitle');
+      const bootEl = document.getElementById('boot');
+      const siteEl = document.getElementById('site');
+
+      function typeText(el, text, speed = 20) {
+        return new Promise((resolve) => {
+          if (!text) { resolve(); return; }
+          el.textContent = '';
+          el.classList.add('typing');
+          let i = 0;
+          const interval = setInterval(() => {
+            el.textContent += text[i];
+            i++;
+            if (i >= text.length) {
+              clearInterval(interval);
+              el.classList.remove('typing');
+              resolve();
+            }
+          }, speed);
+        });
+      }
+
+      function skipBoot() {
+        bootEl.remove();
+        document.body.classList.add('loaded');
+        siteEl.classList.add('visible');
+      }
+
+      async function runBoot() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          skipBoot();
+          return;
+        }
+
+        STEPS.forEach((step, i) => {
+          const span = document.createElement('span');
+          span.className = 'boot-step';
+          span.innerHTML = `<span class="boot-step__spinner"></span><span class="boot-step__label">${step.label}</span>`;
+          stepsEl.appendChild(span);
+
+          if (i < STEPS.length - 1) {
+            const sep = document.createElement('span');
+            sep.className = 'boot-separator';
+            sep.textContent = '\u2009→\u2009';
+            stepsEl.appendChild(sep);
+          }
+        });
+
+        const stepEls = stepsEl.querySelectorAll('.boot-step');
+        const sepEls = stepsEl.querySelectorAll('.boot-separator');
+
+        for (let i = 0; i < STEPS.length; i++) {
+          stepEls[i].classList.add('active');
+
+          await typeText(subtitleEl, STEPS[i].subtitle);
+
+          await new Promise((r) => setTimeout(r, STEPS[i].duration));
+
+          stepEls[i].classList.remove('active');
+          stepEls[i].classList.add('completed');
+          if (sepEls[i - 1]) sepEls[i - 1].classList.add('completed');
+        }
+
+        await new Promise((r) => setTimeout(r, 800));
+        bootEl.classList.add('exit');
+        bootEl.setAttribute('aria-hidden', 'true');
+        document.body.classList.add('loaded');
+
+        await new Promise((r) => setTimeout(r, 200));
+        siteEl.classList.add('visible');
+
+        setTimeout(() => bootEl.remove(), 800);
+      }
+
+      runBoot();
+    </script>
   </body>
 </html>
