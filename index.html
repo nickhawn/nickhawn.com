@@ -66,14 +66,26 @@
       }
 
       .intro__heading {
-        font-size: clamp(1.5rem, 4.5vw, 2rem);
+        font-size: clamp(2.25rem, 5.5vw, 3.25rem);
         font-weight: 700;
         line-height: 1.4;
         margin: 0;
-        max-width: 700px;
+        max-width: 1100px;
       }
       .intro__name {
         color: var(--color-primary);
+        position: relative;
+        overflow: visible;
+        font-size: inherit;
+      }
+      .intro__name .underline-svg {
+        position: absolute;
+        left: -6px;
+        bottom: -8px;
+        width: calc(100% + 6px);
+        height: 14px;
+        pointer-events: none;
+        overflow: visible;
       }
       .intro__links {
         display: flex;
@@ -86,25 +98,42 @@
         display: inline-flex;
         align-items: center;
         gap: 0.25rem;
-        font-size: 0.875rem;
+        font-size: clamp(0.95rem, 1.2vw, 1.15rem);
         color: var(--color-accent);
         text-decoration: none;
-        background-image: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-        background-size: 0% 2px;
-        background-repeat: no-repeat;
-        background-position: left bottom;
-        padding-bottom: 2px;
-        transition: background-size 0.3s ease-in-out, opacity 0.2s ease-in-out;
+        position: relative;
+        padding-bottom: 6px;
       }
-      .intro__link:hover,
-      .intro__link:focus {
-        opacity: 0.8;
-        background-size: 100% 2px;
+      .intro__link .underline-svg {
+        position: absolute;
+        left: -4px;
+        bottom: -2px;
+        width: calc(100% + 8px);
+        height: 10px;
+        pointer-events: none;
+        overflow: visible;
+      }
+      .intro__link .underline-svg path {
+        stroke-dashoffset: var(--path-length);
+        stroke-dasharray: var(--path-length);
+        transition: none;
+      }
+      .intro__link.ready .underline-svg path {
+        transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .intro__link:hover .underline-svg path,
+      .intro__link:focus .underline-svg path {
+        stroke-dashoffset: 0;
       }
       @media (prefers-reduced-motion: reduce) {
         .intro__link,
-        .page {
+        .page,
+        .intro__link.ready .underline-svg path {
           transition: none;
+        }
+        .intro__link:hover .underline-svg path,
+        .intro__link:focus .underline-svg path {
+          stroke-dashoffset: 0;
         }
       }
     </style>
@@ -152,6 +181,79 @@
           document.body.style.overflow = '';
         }, { once: true });
       }
+
+      const rootStyles = getComputedStyle(document.documentElement);
+      const colorPrimary = rootStyles.getPropertyValue('--color-primary').trim();
+      const colorAccent = rootStyles.getPropertyValue('--color-accent').trim();
+
+      function createUnderlineSVG(el, { color, opacity, width: strokeWidth, w, h, d, animate = true }) {
+        w = w ?? el.offsetWidth + 8;
+        h = h ?? 10;
+
+        if (!d) {
+          const startY = 4 + Math.random() * 2;
+          const endY = 4 + Math.random() * 2;
+          const cp1x = w * (0.2 + Math.random() * 0.15);
+          const cp1y = startY - 1 - Math.random() * 2;
+          const cp2x = w * (0.6 + Math.random() * 0.15);
+          const cp2y = endY + 1 + Math.random() * 2;
+          d = `M2 ${startY} C ${cp1x} ${cp1y} ${cp2x} ${cp2y} ${w - 2} ${endY}`;
+        }
+
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+        svg.setAttribute('preserveAspectRatio', 'none');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.classList.add('underline-svg');
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', d);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', color);
+        path.setAttribute('stroke-opacity', opacity);
+        path.setAttribute('stroke-width', strokeWidth);
+        path.setAttribute('stroke-linecap', 'round');
+
+        svg.appendChild(path);
+        el.appendChild(svg);
+
+        if (animate) {
+          const len = path.getTotalLength();
+          path.style.setProperty('--path-length', len);
+        }
+
+        return { svg, path };
+      }
+
+      // Name underline — always visible, organic curves
+      const nameEl = document.querySelector('.intro__name');
+      if (nameEl) {
+        const w = nameEl.offsetWidth + 6;
+        const h = 14;
+
+        const s1 = 7 + Math.random() * 2;
+        const e1 = 8 + Math.random() * 2;
+        const d1 = `M2 ${s1} C ${w * 0.3} ${s1 - 4 - Math.random() * 2} ${w * 0.7} ${e1 + 2 + Math.random() * 2} ${w - 2} ${e1}`;
+        createUnderlineSVG(nameEl, { color: colorPrimary, opacity: '0.4', width: 12, w, h, d: d1, animate: false });
+
+        const s2 = 2 + Math.random() * 2;
+        const e2 = 7 + Math.random() * 2;
+        const d2 = `M-6 ${s2} Q ${w * 0.5 + Math.random() * w * 0.1} ${s2 + 8 + Math.random() * 4} ${w - 4} ${e2}`;
+        createUnderlineSVG(nameEl, { color: colorAccent, opacity: '0.8', width: 7, w, h, d: d2, animate: false });
+      }
+
+      // Link underlines — draw in on hover
+      document.querySelectorAll('.intro__link').forEach(link => {
+        createUnderlineSVG(link, { color: colorPrimary, opacity: '0.35', width: 7 });
+        createUnderlineSVG(link, { color: colorAccent, opacity: '0.85', width: 5 });
+      });
+
+      // Enable transitions only after paint so there's no reverse flash on load
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.querySelectorAll('.intro__link').forEach(l => l.classList.add('ready'));
+        });
+      });
     </script>
   </body>
 </html>
