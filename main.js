@@ -69,6 +69,30 @@
   const colorPrimary = rootStyles.getPropertyValue("--color-primary").trim();
   const colorAccent = rootStyles.getPropertyValue("--color-accent").trim();
 
+  const appendSVGPath = (
+    el,
+    { w, h, d, color, opacity, strokeWidth, className = "underline-svg", linejoin }
+  ) => {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+    svg.setAttribute("preserveAspectRatio", "none");
+    svg.setAttribute("aria-hidden", "true");
+    svg.classList.add(className);
+
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", d);
+    path.setAttribute("fill", "none");
+    path.setAttribute("stroke", color);
+    path.setAttribute("stroke-opacity", opacity);
+    path.setAttribute("stroke-width", strokeWidth);
+    path.setAttribute("stroke-linecap", "round");
+    if (linejoin) path.setAttribute("stroke-linejoin", linejoin);
+
+    svg.appendChild(path);
+    el.appendChild(svg);
+    return { svg, path };
+  };
+
   const createUnderlineSVG = (
     el,
     { color, opacity, width: strokeWidth, w, h, d, animate = true }
@@ -86,28 +110,11 @@
       d = `M2 ${startY} C ${cp1x} ${cp1y} ${cp2x} ${cp2y} ${w - 2} ${endY}`;
     }
 
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
-    svg.setAttribute("preserveAspectRatio", "none");
-    svg.setAttribute("aria-hidden", "true");
-    svg.classList.add("underline-svg");
-
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", d);
-    path.setAttribute("fill", "none");
-    path.setAttribute("stroke", color);
-    path.setAttribute("stroke-opacity", opacity);
-    path.setAttribute("stroke-width", strokeWidth);
-    path.setAttribute("stroke-linecap", "round");
-
-    svg.appendChild(path);
-    el.appendChild(svg);
+    const { path } = appendSVGPath(el, { w, h, d, color, opacity, strokeWidth });
 
     if (animate) {
       path.style.setProperty("--path-length", path.getTotalLength());
     }
-
-    return { svg, path };
   };
 
   const drawOverlaidCurves = (el, { wPad, primaryWidth, primaryOpacity, accentWidth, accentOpacity }) => {
@@ -125,6 +132,35 @@
     createUnderlineSVG(el, { color: colorAccent, opacity: accentOpacity, width: accentWidth, w, h, d: d2, animate: false });
   };
 
+  const drawImperfectBorder = (el, { color, opacity, strokeWidth }) => {
+    const w = el.offsetWidth;
+    const h = el.offsetHeight;
+    if (!w || !h) return;
+
+    const j = (max = 6) => (Math.random() - 0.5) * max;
+    const bow = 8;
+
+    const tl = { x: j(), y: j() };
+    const tr = { x: w + j(), y: j() };
+    const br = { x: w + j(), y: h + j() };
+    const bl = { x: j(), y: h + j() };
+
+    const d = [
+      `M ${tl.x} ${tl.y}`,
+      `C ${w * 0.3 + j()} ${tl.y - bow + j()} ${w * 0.7 + j()} ${tr.y + bow + j()} ${tr.x} ${tr.y}`,
+      `C ${tr.x + bow + j()} ${h * 0.3 + j()} ${br.x - bow + j()} ${h * 0.7 + j()} ${br.x} ${br.y}`,
+      `C ${w * 0.7 + j()} ${br.y + bow + j()} ${w * 0.3 + j()} ${bl.y - bow + j()} ${bl.x} ${bl.y}`,
+      `C ${bl.x - bow + j()} ${h * 0.7 + j()} ${tl.x + bow + j()} ${h * 0.3 + j()} ${tl.x} ${tl.y}`,
+      "Z",
+    ].join(" ");
+
+    appendSVGPath(el, {
+      w, h, d, color, opacity, strokeWidth,
+      className: "imperfect-border-svg",
+      linejoin: "round",
+    });
+  };
+
   const initUnderlines = () => {
     document.querySelectorAll(".underline--name").forEach((el) =>
       drawOverlaidCurves(el, { wPad: 6, primaryWidth: 12, primaryOpacity: "0.4", accentWidth: 7, accentOpacity: "0.8" })
@@ -138,6 +174,10 @@
     drawLinks.forEach((link) => {
       createUnderlineSVG(link, { color: colorPrimary, opacity: "0.35", width: 7 });
       createUnderlineSVG(link, { color: colorAccent, opacity: "0.85", width: 5 });
+    });
+
+    document.querySelectorAll(".post--featured").forEach((el) => {
+      drawImperfectBorder(el, { color: colorAccent, opacity: "0.7", strokeWidth: 3 });
     });
 
     // Enable transitions only after paint so the draw-on-hover underlines

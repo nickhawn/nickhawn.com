@@ -242,6 +242,9 @@ h4 {
 }
 
 @media (max-width: 640px) {
+  .nav {
+    border-bottom-color: var(--color-border);
+  }
   .nav__inner {
     flex-direction: column;
     align-items: flex-start;
@@ -515,6 +518,42 @@ a.card:focus-visible::before {
 }
 .post:last-child {
   border-bottom: none;
+}
+
+.post--featured {
+  position: relative;
+  background: color-mix(in oklab, var(--color-primary) 40%, var(--color-bg));
+  margin-inline: -1.25rem;
+  padding-inline: 1.25rem;
+  border-radius: var(--radius-sm);
+  border-bottom-color: transparent;
+  isolation: isolate;
+}
+@media (max-width: 720px) {
+  .post--featured {
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
+  }
+}
+.imperfect-border-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: -1;
+}
+.post:has(+ .post--featured) {
+  border-bottom-color: transparent;
+}
+.post--featured .post__date {
+  color: var(--color-text);
+  font-weight: 600;
+}
+.post--featured .post__link:hover .post__title,
+.post--featured .post__link:focus-visible .post__title {
+  color: var(--color-accent);
 }
 .post__link {
   display: grid;
