@@ -176,7 +176,7 @@
       createUnderlineSVG(link, { color: colorAccent, opacity: "0.85", width: 5 });
     });
 
-    document.querySelectorAll(".post--featured").forEach((el) => {
+    document.querySelectorAll(".post--featured, .card").forEach((el) => {
       drawImperfectBorder(el, { color: colorAccent, opacity: "0.7", strokeWidth: 3 });
     });
 

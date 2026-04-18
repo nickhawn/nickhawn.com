@@ -415,15 +415,15 @@ main:has(.hero) {
 .card {
   position: relative;
   padding: 1.75rem;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border: 1px solid transparent;
   border-radius: var(--radius);
   color: var(--color-text);
   text-decoration: none;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease);
+  transition: transform 0.25s var(--ease);
   isolation: isolate;
 }
 .card::before {
@@ -439,7 +439,6 @@ main:has(.hero) {
 a.card:hover,
 a.card:focus-visible {
   transform: translate(-2px, -2px);
-  border-color: var(--color-primary);
 }
 a.card:hover::before,
 a.card:focus-visible::before {
@@ -522,7 +521,7 @@ a.card:focus-visible::before {
 
 .post--featured {
   position: relative;
-  background: color-mix(in oklab, var(--color-primary) 40%, var(--color-bg));
+  background: color-mix(in oklab, var(--color-primary) 20%, var(--color-bg));
   margin-inline: -1.25rem;
   padding-inline: 1.25rem;
   border-radius: var(--radius-sm);
