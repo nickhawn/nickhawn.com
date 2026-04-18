@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f4e9e4" />
+
+    <title>Work | Nick Hawn</title>
+    <meta
+      name="description"
+      content="Selected work by Nick Hawn: custom software, performance optimization, AI platforms, and tech leadership at Atomic Object."
+    />
+
+    <meta property="og:title" content="Work | Nick Hawn" />
+    <meta
+      property="og:description"
+      content="Selected work: a storytelling platform for a game studio with 80M+ downloads, AI chat performance wins, multi-channel AI agent platform."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nickhawn.com/work" />
+    <meta property="og:image" content="https://nickhawn.com/assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link
+      href="https://fonts.bunny.net/css?family=geist:400,600|geist-mono:400,600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="nav__brand" href="/" aria-label="Nick Hawn, home">Nick Hawn</a>
+        <ul class="nav__links">
+          <li><a class="nav__link" href="/">Home</a></li>
+          <li>
+            <a class="nav__link" href="/work" aria-current="page">Work</a>
+          </li>
+          <li><a class="nav__link" href="/writing">Writing</a></li>
+          <li><a class="nav__link nav__link--external" href="/assets/nick-hawn-resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+          <li><a class="nav__link" href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="container page-header">
+        <p class="eyebrow">Work</p>
+        <h1>Selected work I've shipped</h1>
+        <p>
+          Some of the software I've helped ship. Usually some mix of AI
+          agents, production platforms, and leading the teams behind them.
+        </p>
+      </section>
+
+      <section class="container section" aria-label="Projects">
+        <div class="grid grid--work">
+          <a
+            class="card card--featured reveal"
+            id="ai-platform"
+            href="https://atomicobject.com/portfolio/fetch-ai"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="eyebrow">AI platform · Consulting</span>
+            <h2 class="card__title">
+              Scaling an AI Platform<i
+                class="fa-solid fa-arrow-up-right-from-square"
+                aria-hidden="true"
+              ></i>
+            </h2>
+            <p class="card__desc">
+              Turned experimental AI research into software users actually
+              came back for: Day 7 retention climbed 10×. Under the hood, we built an AI agent
+              harness: multi-agent orchestration, event-driven workflows,
+              and the observability and scaffolding to take research
+              prototypes all the way to production.
+            </p>
+            <div class="card__meta">
+              <span class="card__metric">64% reduction in time-to-first-token</span>
+              <span>· Event-driven architecture at scale</span>
+            </div>
+            <div class="card__tags">
+              <span class="card__tag">LangGraph</span>
+              <span class="card__tag">Python</span>
+              <span class="card__tag">Django</span>
+              <span class="card__tag">FastAPI</span>
+              <span class="card__tag">TypeScript</span>
+              <span class="card__tag">Next.js</span>
+            </div>
+          </a>
+
+          <article class="card reveal" id="freight-tms">
+            <span class="eyebrow">Cloud modernization · Pipeline automation</span>
+            <h2 class="card__title">Freight Platform in Production</h2>
+            <p class="card__desc">
+              Helped a national freight brokerage take their
+              order-coordination platform to production. It shuttles load
+              requests and shipment updates between shippers, carriers,
+              and the dispatch teams in between. Moved it off aging
+              on-prem servers onto managed cloud infrastructure, kept it
+              flowing through downstream outages, and built the tracing
+              on-call support needed to debug exactly how the platform
+              processed any given message.
+            </p>
+            <div class="card__meta">
+              <span class="card__metric">~50× throughput growth</span>
+              <span>· Fault-tolerant messaging</span>
+            </div>
+            <div class="card__tags">
+              <span class="card__tag">.NET</span>
+              <span class="card__tag">C#</span>
+              <span class="card__tag">MongoDB</span>
+              <span class="card__tag">AWS</span>
+              <span class="card__tag">EKS</span>
+              <span class="card__tag">ElastiCache</span>
+              <span class="card__tag">Kafka</span>
+            </div>
+          </article>
+
+          <a
+            class="card reveal"
+            id="storytelling"
+            href="https://atomicobject.com/portfolio/pixelberry-digital-storytelling-platform"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="eyebrow">Full-stack · Design system</span>
+            <h2 class="card__title">
+              Interactive Storytelling Platform<i
+                class="fa-solid fa-arrow-up-right-from-square"
+                aria-hidden="true"
+              ></i>
+            </h2>
+            <p class="card__desc">
+              Shipped a cross-platform storytelling platform for a major
+              mobile game studio, delivered on time and on budget against
+              a 12-month fixed timeline. Six integrated applications
+              built across three parallel teams using micro-frontend
+              architecture. I owned full-stack development of user-facing
+              surfaces end-to-end and built the shared design system that
+              unified UX across the suite.
+            </p>
+            <div class="card__meta">
+              <span class="card__metric">6 integrated applications</span>
+              <span>· Shared design system</span>
+            </div>
+            <div class="card__tags">
+              <span class="card__tag">TypeScript</span>
+              <span class="card__tag">React</span>
+              <span class="card__tag">PostgreSQL</span>
+              <span class="card__tag">AWS</span>
+              <span class="card__tag">Neptune</span>
+            </div>
+          </a>
+
+          <article class="card reveal" id="leadership">
+            <span class="eyebrow">Leadership &amp; culture</span>
+            <h2 class="card__title">Tech lead &amp; mentor</h2>
+            <p class="card__desc">
+              Architecture, stack calls, and risk-spotting on projects
+              that need a tech lead. Mentor engineers through pair and
+              mob programming. Work with leadership on DEI.
+            </p>
+            <div class="card__meta">
+              <span>Architecture</span>
+              <span>· Mentorship</span>
+              <span>· DEI advocacy</span>
+            </div>
+          </article>
+
+          <a
+            class="card reveal"
+            id="github"
+            href="https://github.com/nickhawn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="eyebrow">Open source · Experiments</span>
+            <h2 class="card__title">
+              github.com/nickhawn<i
+                class="fa-solid fa-arrow-up-right-from-square"
+                aria-hidden="true"
+              ></i>
+            </h2>
+            <p class="card__desc">
+              Agent experiments, coding puzzles, and the small tools
+              I build for myself.
+            </p>
+            <div class="card__meta">
+              <span><i class="fa-brands fa-github" aria-hidden="true"></i> @nickhawn</span>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <ul class="social-links" aria-label="Social links">
+          <li>
+            <a
+              href="https://github.com/nickhawn"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/nickhawn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://spin.atomicobject.com/author/nick-hawn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Blog on Atomic Spin"
+            >
+              <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="/main.js" defer></script>
+  </body>
+</html>
